@@ -28,7 +28,7 @@ dependencies {
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 
-    compile 'dled.java.experiments:dled.java.experiments:0.0.1-SNAPSHOT'
+    compile 'dled.java.experiments:dled.java.experiments:0.0.2-SNAPSHOT'
 }
 
 // Define the main class for the application
