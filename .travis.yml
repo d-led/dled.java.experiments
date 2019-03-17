@@ -1,5 +1,8 @@
 language: java
 
+# prevent automatic gradle build
+install: true
+
 stages:
   - name: build
   - name: snapshot
