@@ -9,6 +9,8 @@ stages:
     if: branch = master
   - name: example
     if: branch = master
+  - name: release
+    if: tag =~ ^v\d
 
 before_install:
   - chmod +x gradlew example/gradlew
@@ -16,8 +18,10 @@ before_install:
 jobs:
   include:
     - stage: build
-      script: ./gradlew build -PmavenPassword=none
+      script: ./gradlew build test jar
     - stage: snapshot
+      script: ./gradlew uploadArchives -Psnapshot -PmavenPassword=${SNAPSHOT_TOKEN}
+    - stage: release
       script: ./gradlew uploadArchives -PmavenPassword=${SNAPSHOT_TOKEN}
     - stage: example
       script: cd example && ./gradlew run
