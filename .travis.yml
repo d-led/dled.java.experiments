@@ -25,3 +25,17 @@ jobs:
       script: ./gradlew uploadArchives -PmavenPassword=${SNAPSHOT_TOKEN}
     - stage: example
       script: cd example && ./gradlew run
+
+# maven: mvn deploy -s settings.xml -X -Dsnapshot.pw=${SNAPSHOT_TOKEN}
+# settings.xml:
+# <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+#   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+#   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+#   http://maven.apache.org/xsd/settings-1.0.0.xsd">
+#   <servers>
+#     <server>
+#       <id>packagecloud-dled</id>
+#       <password>${snapshot.pw}</password>
+#     </server>
+#   </servers>
+# </settings>
