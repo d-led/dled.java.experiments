@@ -1,0 +1,20 @@
+language: java
+
+stages:
+  - name: build
+  - name: snapshot
+    if: branch = master
+  - name: example
+    if: branch = master
+
+before_install:
+  - chmod +x gradlew example/gradlew
+
+jobs:
+  include:
+    - stage: build
+      script: ./gradlew build
+    - stage: snapshot
+      script: ./gradlew uploadArchives -PmavenPassword=${SNAPSHOT_TOKEN}
+    - stage: example
+      script: cd example && ./gradlew run
