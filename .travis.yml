@@ -18,7 +18,7 @@ before_install:
 jobs:
   include:
     - stage: pre-conditions
-      script: ping google.com
+      script: nslookup google.com
     - stage: build
       script: ./gradlew build test jar
     - stage: snapshot
